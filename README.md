@@ -4,7 +4,7 @@ JUnitでAndroidのコードを試験する際に役に立つものを追加し�
 ## MockSharedPreferences
 試験対象のコードにSharedPreferencesへのアクセスが存在しているとJUnit上では正常に動作しないことがある。
 その場合に以下のようなコードを記載し、LocalTestActivityを引き渡すことで解消することを目指す。
----------------------------------
+```
 public class LocalTestActivity extends TestActivity{    // TestActivityが試験対象のActivity
     private MockSharedPreferences mPreferences = new MockSharedPreferences();
 
@@ -13,4 +13,4 @@ public class LocalTestActivity extends TestActivity{    // TestActivityが試験
         return mPreferences;
     }
 }
----------------------------------
+```
