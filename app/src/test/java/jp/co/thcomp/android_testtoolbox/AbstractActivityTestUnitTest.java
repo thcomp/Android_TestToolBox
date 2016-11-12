@@ -3,22 +3,23 @@ package jp.co.thcomp.android_testtoolbox;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.support.v4.app.FragmentActivity;
 
 import org.junit.Test;
 
-import jp.co.thcomp.testtoolbox.AbstractActivityTestBase;
+import jp.co.thcomp.testtoolbox.AbstractActivityTest;
 import jp.co.thcomp.testtoolbox.MockSharedPreferences;
 
 /**
  * Created by H_Tatsuguchi on 2016/11/11.
  */
 
-public class AbstractActivityTestBaseUnitTest {
+public class AbstractActivityTestUnitTest {
     private LocalActivityTest mLocalActivityTest;
     private TargetApplication mApp;
     private Activity mActivity;
 
-    public AbstractActivityTestBaseUnitTest() {
+    public AbstractActivityTestUnitTest() {
         mApp = new TargetApplication();
         mLocalActivityTest = new LocalActivityTest(mApp, TargetActivity.class);
         mActivity = mLocalActivityTest.getActivity();
@@ -31,7 +32,7 @@ public class AbstractActivityTestBaseUnitTest {
         assert mActivity.getSharedPreferences("", Context.MODE_PRIVATE) instanceof MockSharedPreferences;
     }
 
-    private class LocalActivityTest extends AbstractActivityTestBase<TargetApplication, TargetActivity>{
+    private class LocalActivityTest extends AbstractActivityTest<TargetApplication, TargetActivity> {
         public LocalActivityTest(TargetApplication targetApplication, Class<TargetActivity> targetActivityClass) {
             super(targetApplication, targetActivityClass);
         }
@@ -41,7 +42,7 @@ public class AbstractActivityTestBaseUnitTest {
 
     }
 
-    public static class TargetActivity extends Activity{
+    public static class TargetActivity extends FragmentActivity{
 
     }
 }
