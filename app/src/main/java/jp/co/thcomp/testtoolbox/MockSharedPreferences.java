@@ -9,8 +9,20 @@ import java.util.Map;
 import java.util.Set;
 
 public class MockSharedPreferences implements SharedPreferences {
+    private static final MockSharedPreferences sInstance = new MockSharedPreferences();
+    public static MockSharedPreferences getGlobalInstance(){
+        return sInstance;
+    }
+
     private HashMap<String, Object> mValueMap = new HashMap<String, Object>();
     private ArrayList<OnSharedPreferenceChangeListener> mListenerList = new ArrayList<OnSharedPreferenceChangeListener>();
+
+    /**
+     * @deprecated インスタンスは共有しないと意味がないので、各自でのインスタンス化は推奨しない。MOckSharedPreferences.getGlobalInstanceを使用すること
+     */
+    public MockSharedPreferences(){
+        // インスタンスは共有しないと意味がないので、各自でのインスタンス化は許可しない
+    }
 
     @Override
     public Map<String, ?> getAll() {

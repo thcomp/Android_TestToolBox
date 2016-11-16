@@ -17,8 +17,9 @@ public class MockSharedPreferencesUnitTest {
 
     @Test
     public void testIntegerValue() throws Exception {
-        MockSharedPreferences preferences = new MockSharedPreferences();
+        MockSharedPreferences preferences = MockSharedPreferences.getGlobalInstance();
         SharedPreferences.Editor editor = preferences.edit();
+        editor.clear().commit();
 
         editor.putInt("test", 1);
         assert preferences.getInt("test", 0) != 1;
@@ -28,8 +29,9 @@ public class MockSharedPreferencesUnitTest {
 
     @Test
     public void testFloatValue() throws Exception {
-        MockSharedPreferences preferences = new MockSharedPreferences();
+        MockSharedPreferences preferences = MockSharedPreferences.getGlobalInstance();
         SharedPreferences.Editor editor = preferences.edit();
+        editor.clear().commit();
 
         editor.putFloat("test", 1f);
         assert preferences.getFloat("test", 0f) != 1f;
@@ -39,8 +41,9 @@ public class MockSharedPreferencesUnitTest {
 
     @Test
     public void testStringValue() throws Exception {
-        MockSharedPreferences preferences = new MockSharedPreferences();
+        MockSharedPreferences preferences = MockSharedPreferences.getGlobalInstance();
         SharedPreferences.Editor editor = preferences.edit();
+        editor.clear().commit();
 
         editor.putString("test", "1");
         assert !preferences.getString("test", "0").equals("1");
@@ -50,8 +53,9 @@ public class MockSharedPreferencesUnitTest {
 
     @Test
     public void testBooleanValue() throws Exception {
-        MockSharedPreferences preferences = new MockSharedPreferences();
+        MockSharedPreferences preferences = MockSharedPreferences.getGlobalInstance();
         SharedPreferences.Editor editor = preferences.edit();
+        editor.clear().commit();
 
         editor.putBoolean("test", true);
         assert !preferences.getBoolean("test", false);
@@ -61,8 +65,9 @@ public class MockSharedPreferencesUnitTest {
 
     @Test
     public void testLongValue() throws Exception {
-        MockSharedPreferences preferences = new MockSharedPreferences();
+        MockSharedPreferences preferences = MockSharedPreferences.getGlobalInstance();
         SharedPreferences.Editor editor = preferences.edit();
+        editor.clear().commit();
 
         editor.putLong("test", 1);
         assert preferences.getLong("test", 0) != 1;
@@ -72,8 +77,9 @@ public class MockSharedPreferencesUnitTest {
 
     @Test
     public void testContainAndRemove() throws Exception {
-        MockSharedPreferences preferences = new MockSharedPreferences();
+        MockSharedPreferences preferences = MockSharedPreferences.getGlobalInstance();
         SharedPreferences.Editor editor = preferences.edit();
+        editor.clear().commit();
 
         assert !preferences.contains("test");
         editor.putLong("test", 1);

@@ -22,7 +22,7 @@ abstract public class AbstractActivityTest<TApp extends Application, TAct extend
     protected android.app.FragmentManager mFragmentManager;
 
     public AbstractActivityTest(TApp app, Class<TAct> actClass) {
-        mMockSharedPreferences = new MockSharedPreferences();
+        mMockSharedPreferences = MockSharedPreferences.getGlobalInstance();
         mApplication = app;
         mApplicationContext = new MockContext();
         mSupportFragmentManager = new MockSupportFragmentManager();
@@ -34,11 +34,15 @@ abstract public class AbstractActivityTest<TApp extends Application, TAct extend
             Mockito.when(((FragmentActivity) mActivity).getSupportFragmentManager()).thenReturn(mSupportFragmentManager);
         }
 
-        // TODO 他の引数でも対応できるようにどうにかすべき
-        Mockito.when(mActivity.getSharedPreferences("", Context.MODE_PRIVATE)).thenReturn(mMockSharedPreferences);
+        setMockitoForGetSharedPreferences();
     }
 
     public Activity getActivity() {
         return mActivity;
+    }
+
+    protected void setMockitoForGetSharedPreferences(){
+        // TODO 他の引数でも対応できるようにどうにかすべき
+        Mockito.when(mActivity.getSharedPreferences("", Context.MODE_PRIVATE)).thenReturn(mMockSharedPreferences);
     }
 }
