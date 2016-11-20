@@ -42,7 +42,7 @@ public class AbstractActivityTestUnitTest {
 
     }
 
-    public static class TargetActivity extends FragmentActivity{
+    public static class TargetActivity extends FragmentActivity {
 
     }
 }
